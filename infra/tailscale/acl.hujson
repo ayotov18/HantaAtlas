@@ -1,0 +1,95 @@
+// HantaAtlas tailnet ACL.
+// Paste into Tailscale admin console → Access Controls.
+// Default-deny posture; explicit grants only; ACL tests at the bottom.
+{
+  // ─── Tag definitions ──────────────────────────────────────────────────
+  // Tag ownership controls who can attach a tag to a device. Keep the prod
+  // tag locked to the admin group only.
+  "tagOwners": {
+    "tag:prod-server":  ["group:admin"],
+    "tag:prod-monitor": ["group:admin"],
+    "tag:ci":           ["group:admin"]
+  },
+
+  // ─── Groups ───────────────────────────────────────────────────────────
+  // Replace these with real Tailscale identities (email or shared-domain).
+  "groups": {
+    "group:admin": ["yotov.anthony@gmail.com"],
+    "group:ops":   ["yotov.anthony@gmail.com"]
+  },
+
+  // ─── Hosts (optional — convenience aliases) ───────────────────────────
+  "hosts": {
+    "ios-backend-prod": "100.0.0.0"  // placeholder — Tailscale will resolve via MagicDNS once tagged
+  },
+
+  // ─── ACL rules (default deny) ─────────────────────────────────────────
+  "acls": [
+    // Admins reach prod servers on SSH (22) and HTTPS (443) only.
+    {
+      "action": "accept",
+      "src":    ["group:admin"],
+      "dst":    ["tag:prod-server:22", "tag:prod-server:443"]
+    },
+
+    // Monitoring node may scrape Prometheus/node_exporter on prod.
+    // Adjust / remove if you do not run a monitoring node.
+    {
+      "action": "accept",
+      "src":    ["tag:prod-monitor"],
+      "dst":    ["tag:prod-server:9100", "tag:prod-server:9090"]
+    },
+
+    // CI runner (if used) may reach the API for smoke tests over HTTPS only.
+    {
+      "action": "accept",
+      "src":    ["tag:ci"],
+      "dst":    ["tag:prod-server:443"]
+    }
+
+    // Deliberately NO "*:*" rule. Anything not listed above is denied.
+  ],
+
+  // ─── Tailscale SSH (replaces public sshd password/key prompts) ────────
+  // Admins may use Tailscale SSH to reach prod servers as the ops user.
+  "ssh": [
+    {
+      "action": "check",                 // re-auth in browser per session
+      "src":    ["group:admin"],
+      "dst":    ["tag:prod-server"],
+      "users":  ["ops"]
+    }
+  ],
+
+  // ─── ACL tests — run with `tailscale acl test` or admin console "Tests" ─
+  "tests": [
+    // Admin → prod SSH allowed
+    { "src": "yotov.anthony@gmail.com", "accept": ["tag:prod-server:22"] },
+    // Admin → prod HTTPS allowed
+    { "src": "yotov.anthony@gmail.com", "accept": ["tag:prod-server:443"] },
+
+    // Random user (must not exist in groups) → prod SSH denied.
+    // To test denial, the admin console expects an "deny" entry — Tailscale
+    // currently models tests with `accept`, so add additional named users
+    // here to assert positive paths. Negative paths are best validated by
+    // confirming no `acls` rule grants them.
+
+    // Admin must NOT reach Postgres (5432) on prod from outside the host.
+    // We assert positive paths explicitly; ensure no rule above mentions
+    // 5432 — that is the "denied by default" guarantee.
+    {
+      "src":    "yotov.anthony@gmail.com",
+      "accept": ["tag:prod-server:443"],
+      "deny":   ["tag:prod-server:5432", "tag:prod-server:6379", "tag:prod-server:3000"]
+    }
+  ],
+
+  // ─── Posture / device safeguards ──────────────────────────────────────
+  // Set these in the admin console rather than ACLs:
+  //   • Require MFA/SSO for the whole tailnet.
+  //   • Set device key expiry (e.g. 90 days for user devices).
+  //   • Require manual machine approval for new devices.
+  //   • Periodically remove stale devices (e.g. > 60 days idle).
+  "disableIPv4": false,
+  "disableIPv6": false
+}

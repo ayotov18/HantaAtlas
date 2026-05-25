@@ -1,0 +1,29 @@
+{
+  "name": "hantaatlas",
+  "private": true,
+  "workspaces": [
+    "backend/api",
+    "backend/worker",
+    "marketing"
+  ],
+  "scripts": {
+    "build": "npm run prisma:generate && npm run build --workspace backend/api && npm run build --workspace backend/worker",
+    "build:marketing": "npm run build --workspace marketing",
+    "test": "npm run test --workspace backend/api && npm run test --workspace backend/worker",
+    "lint": "npm run lint --workspace backend/api && npm run lint --workspace backend/worker",
+    "lint:marketing": "npm run lint --workspace marketing",
+    "prisma:generate": "prisma generate --schema backend/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate deploy --schema backend/prisma/schema.prisma",
+    "prisma:seed": "tsx backend/prisma/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prisma": "^6.19.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=22 <23"
+  }
+}

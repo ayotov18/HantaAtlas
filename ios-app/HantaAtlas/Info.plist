@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Custom Info.plist keys merged on top of the GENERATE_INFOPLIST_FILE output.
+
+  - MBXAccessToken   Your Mapbox *public* token. Create one at
+                     https://account.mapbox.com/access-tokens/ and paste it here
+                     (also mirrored in Resources/MapboxAccessToken).
+  - API_BASE_URL     Where the app reaches the HantaAtlas backend. Defaults to
+                     http://localhost:3000 for the iOS Simulator. On a real
+                     device, iOS cannot reach the host's localhost — point this
+                     at your own HTTPS reverse-proxy / tunnel domain instead
+                     (see README → "Run the backend"). Read in APIClient.swift.
+  - NSAppTransportSecurity  Allows plaintext HTTP only to localhost / .local /
+                     unqualified hostnames (dev convenience). Public domains
+                     still require HTTPS — keep your tunnel on https://.
+-->
+<plist version="1.0">
+<dict>
+    <key>MBXAccessToken</key>
+    <string>pk.PUT_YOUR_MAPBOX_TOKEN_HERE</string>
+    <key>API_BASE_URL</key>
+    <string>http://localhost:3000</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+</dict>
+</plist>

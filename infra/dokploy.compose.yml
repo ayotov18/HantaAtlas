@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hantaatlas
+      POSTGRES_USER: hantaatlas
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - hantaatlas_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hantaatlas -d hantaatlas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ..
+      dockerfile: backend/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://hantaatlas:${POSTGRES_PASSWORD}@postgres:5432/hantaatlas
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hantaatlas-api.rule=Host(`${API_DOMAIN}`)
+      - traefik.http.routers.hantaatlas-api.entrypoints=websecure
+      - traefik.http.routers.hantaatlas-api.tls.certresolver=letsencrypt
+      - traefik.http.services.hantaatlas-api.loadbalancer.server.port=3000
+
+  worker:
+    build:
+      context: ..
+      dockerfile: backend/worker/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://hantaatlas:${POSTGRES_PASSWORD}@postgres:5432/hantaatlas
+      SEED_TIMEZONE: Europe/Sofia
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  hantaatlas_postgres:
+

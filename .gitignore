@@ -1,0 +1,98 @@
+# Dependencies
+node_modules/
+.npm/
+.yarn/
+.venv-screenshots/
+
+# Vendored third-party clones kept locally for reference — NOT part of this project
+research-repos/
+
+# Separate sub-project, not part of the HantaAtlas public release
+ios-app/Glassnote/
+
+# Next.js build output
+.next/
+marketing/out/
+
+# Build artifacts
+dist/
+build/
+*.tsbuildinfo
+
+# Environment / secrets — never commit
+.env
+.env.*
+!.env.example
+*.md.local
+*.pem
+*.key
+*.p8
+*.crt
+secrets/
+secrets.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Xcode / iOS — per github/gitignore canonical Global/Xcode + Swift templates
+## User settings (per-developer UI state — never commit)
+xcuserdata/
+*.xcuserstate
+*.xcuserstatedata
+
+## Build artefacts
+*.hmap
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Swift Package Manager
+## NOTE: Package.resolved IS committed (kept out of this list) so dependency
+## versions are reproducible across machines and CI — Apple's recommendation.
+.build/
+.swiftpm/
+
+## CocoaPods / Carthage / fastlane (not used today; listed pre-emptively)
+Pods/
+Carthage/Build/
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Generated Prisma client (regenerated on install)
+backend/prisma/migrations/.cache/
+
+# Local backup artefacts
+*.dump
+*.dump.age
+*.tar.age
+
+# Coverage / test
+coverage/
+.nyc_output/
+__pycache__/
+*.pyc
+
+# Local SSH keys / sensitive material — never commit
+claude
+claude.pub
+*.pem
+
+# Claude Code per-machine overrides (CLAUDE.local.md, .claude/settings.local.json,
+# any *.local.md). The shared CLAUDE.md and .claude/ ARE tracked — this rule
+# only blocks the personal-override variants.
+*.local.md
+.claude/settings.local.json
+.claude/.cache/

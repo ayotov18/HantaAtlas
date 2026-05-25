@@ -1,0 +1,713 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0000000000000000000101 /* HantaAtlasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000201 /* HantaAtlasApp.swift */; };
+		1A0000000000000000000102 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000202 /* ContentView.swift */; };
+		1A0000000000000000000103 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000203 /* Theme.swift */; };
+		1A0000000000000000000104 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000204 /* Models.swift */; };
+		1A0000000000000000000105 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000205 /* Fixtures.swift */; };
+		1A0000000000000000000106 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000206 /* Components.swift */; };
+		1A0000000000000000000107 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000207 /* DashboardView.swift */; };
+		1A0000000000000000000108 /* WorldMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000208 /* WorldMapView.swift */; };
+		1A0000000000000000000109 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000209 /* CountryDetailView.swift */; };
+		1A0000000000000000000110 /* OutbreakFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000210 /* OutbreakFeedView.swift */; };
+		1A0000000000000000000111 /* WatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000211 /* WatchlistView.swift */; };
+		1A0000000000000000000112 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000212 /* GuideView.swift */; };
+		1A0000000000000000000113 /* SourceTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000213 /* SourceTransparencyView.swift */; };
+		1A0000000000000000000114 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000214 /* Assets.xcassets */; };
+		1A0000000000000000000115 /* CountryCentroids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000215 /* CountryCentroids.swift */; };
+		1A0000000000000000000116 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000216 /* APIClient.swift */; };
+		1A0000000000000000000117 /* WorldGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000217 /* WorldGeometry.swift */; };
+		1A0000000000000000000118 /* Resources/world-countries-110m.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000218 /* Resources/world-countries-110m.geojson */; };
+		1A0000000000000000000119 /* OutbreakRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000219 /* OutbreakRoutes.swift */; };
+		1A0000000000000000000120 /* Resources/outbreak-routes.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000220 /* Resources/outbreak-routes.json */; };
+		1A0000000000000000000121 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000221 /* LocationService.swift */; };
+		1A0000000000000000000122 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000222 /* NotificationService.swift */; };
+		1A0000000000000000000123 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000223 /* OnboardingView.swift */; };
+		1A0000000000000000000124 /* SignalArtifactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000224 /* SignalArtifactView.swift */; };
+		1A0000000000000000000125 /* TranslatedSignalText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000225 /* TranslatedSignalText.swift */; };
+		1A0000000000000000000126 /* SignalDotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000226 /* SignalDotWidget.swift */; };
+		1A0000000000000000000127 /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000227 /* AlertsView.swift */; };
+		1A0000000000000000000128 /* TimelineScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000228 /* TimelineScrubber.swift */; };
+		1A0000000000000000000129 /* SwipeFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000229 /* SwipeFeedView.swift */; };
+		1A0000000000000000000134 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000234 /* ProfileView.swift */; };
+		1A0000000000000000000136 /* LaunchTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000236 /* LaunchTrace.swift */; };
+		1A0000000000000000000139 /* NotificationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000239 /* NotificationTester.swift */; };
+		1A000000000000000000013A /* LaunchSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000000000000000000023A /* LaunchSplashView.swift */; };
+		1A000000000000000000013B /* MapboxMapHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000000000000000000023B /* MapboxMapHostView.swift */; };
+		1A000000000000000000013C /* StartupPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000000000000000000023C /* StartupPermissionsView.swift */; };
+		1A0000000000000000000142 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000242 /* KeychainStore.swift */; };
+		1A0000000000000000000143 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000243 /* UserSession.swift */; };
+		1A0000000000000000000144 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000244 /* AuthService.swift */; };
+		1A0000000000000000000145 /* WelcomeHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000245 /* WelcomeHero.swift */; };
+		1A0000000000000000000146 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000246 /* WelcomeView.swift */; };
+		1A0000000000000000000147 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000248 /* AuthGate.swift */; };
+		1A0000000000000000000148 /* PreferencesSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000249 /* PreferencesSync.swift */; };
+		1A0000000000000000000152 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000252 /* LoopingVideoView.swift */; };
+		1A0000000000000000000140 /* CountryCatalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000240 /* CountryCatalogue.swift */; };
+		1A0000000000000000000150 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000250 /* PrivacyInfo.xcprivacy */; };
+		1A0000000000000000000151 /* Resources/auth_loop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000251 /* Resources/auth_loop.mp4 */; };
+		1A0000000000000000000155 /* Resources/cosmic_scrub.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000256 /* Resources/cosmic_scrub.mp4 */; };
+		1A0000000000000000000301 /* HantaAtlasLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000303 /* HantaAtlasLogicTests.swift */; };
+		1A0000000000000000000401 /* HantaAtlasSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000403 /* HantaAtlasSnapshotTests.swift */; };
+		1A0000000000000000000502 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000000000000000000501 /* MapboxMaps */; };
+		8CE8246E2FB2DA31008F1FAC /* MapboxCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 8CE8246D2FB2DA31008F1FAC /* MapboxCommon */; };
+		8CE824702FB2E2A0008F1FAC /* Resources/MapboxAccessToken in Resources */ = {isa = PBXBuildFile; fileRef = 8CE8246F2FB2E2A0008F1FAC /* Resources/MapboxAccessToken */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A0000000000000000000307 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A0000000000000000000008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A0000000000000000000005;
+			remoteInfo = HantaAtlas;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A0000000000000000000001 /* HantaAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HantaAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000000000000000000201 /* HantaAtlasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HantaAtlasApp.swift; sourceTree = "<group>"; };
+		1A0000000000000000000202 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000203 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1A0000000000000000000204 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1A0000000000000000000205 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
+		1A0000000000000000000206 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		1A0000000000000000000207 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000208 /* WorldMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000209 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000210 /* OutbreakFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbreakFeedView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000211 /* WatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000212 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000213 /* SourceTransparencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTransparencyView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A0000000000000000000215 /* CountryCentroids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCentroids.swift; sourceTree = "<group>"; };
+		1A0000000000000000000216 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		1A0000000000000000000217 /* WorldGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGeometry.swift; sourceTree = "<group>"; };
+		1A0000000000000000000218 /* Resources/world-countries-110m.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/world-countries-110m.geojson"; sourceTree = "<group>"; };
+		1A0000000000000000000219 /* OutbreakRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbreakRoutes.swift; sourceTree = "<group>"; };
+		1A0000000000000000000220 /* Resources/outbreak-routes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/outbreak-routes.json"; sourceTree = "<group>"; };
+		1A0000000000000000000251 /* Resources/auth_loop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/auth_loop.mp4"; sourceTree = "<group>"; };
+		1A0000000000000000000256 /* Resources/cosmic_scrub.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/cosmic_scrub.mp4"; sourceTree = "<group>"; };
+		1A0000000000000000000221 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		1A0000000000000000000222 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		1A0000000000000000000223 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000224 /* SignalArtifactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalArtifactView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000225 /* TranslatedSignalText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedSignalText.swift; sourceTree = "<group>"; };
+		1A0000000000000000000226 /* SignalDotWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalDotWidget.swift; sourceTree = "<group>"; };
+		1A0000000000000000000227 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000228 /* TimelineScrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineScrubber.swift; sourceTree = "<group>"; };
+		1A0000000000000000000229 /* SwipeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFeedView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000234 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000236 /* LaunchTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTrace.swift; sourceTree = "<group>"; };
+		1A0000000000000000000239 /* NotificationTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTester.swift; sourceTree = "<group>"; };
+		1A000000000000000000023A /* LaunchSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSplashView.swift; sourceTree = "<group>"; };
+		1A000000000000000000023B /* MapboxMapHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxMapHostView.swift; sourceTree = "<group>"; };
+		1A000000000000000000023C /* StartupPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPermissionsView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000242 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		1A0000000000000000000243 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		1A0000000000000000000244 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		1A0000000000000000000245 /* WelcomeHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeHero.swift; sourceTree = "<group>"; };
+		1A0000000000000000000246 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000247 /* HantaAtlas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HantaAtlas.entitlements; sourceTree = "<group>"; };
+		1A0000000000000000000248 /* AuthGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGate.swift; sourceTree = "<group>"; };
+		1A0000000000000000000249 /* PreferencesSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesSync.swift; sourceTree = "<group>"; };
+		1A0000000000000000000252 /* LoopingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideoView.swift; sourceTree = "<group>"; };
+		1A0000000000000000000240 /* CountryCatalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCatalogue.swift; sourceTree = "<group>"; };
+		1A0000000000000000000250 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1A0000000000000000000302 /* HantaAtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HantaAtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000000000000000000303 /* HantaAtlasLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HantaAtlasLogicTests.swift; sourceTree = "<group>"; };
+		1A0000000000000000000403 /* HantaAtlasSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HantaAtlasSnapshotTests.swift; sourceTree = "<group>"; };
+		8CE8246F2FB2E2A0008F1FAC /* Resources/MapboxAccessToken */ = {isa = PBXFileReference; lastKnownFileType = text; path = Resources/MapboxAccessToken; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0000000000000000000503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE8246E2FB2DA31008F1FAC /* MapboxCommon in Frameworks */,
+				1A0000000000000000000502 /* MapboxMaps in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000003 /* HantaAtlas */,
+				1A0000000000000000000304 /* HantaAtlasTests */,
+				1A0000000000000000000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000003 /* HantaAtlas */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000201 /* HantaAtlasApp.swift */,
+				1A0000000000000000000202 /* ContentView.swift */,
+				1A0000000000000000000203 /* Theme.swift */,
+				1A0000000000000000000204 /* Models.swift */,
+				1A0000000000000000000205 /* Fixtures.swift */,
+				1A0000000000000000000240 /* CountryCatalogue.swift */,
+				1A0000000000000000000206 /* Components.swift */,
+				1A0000000000000000000207 /* DashboardView.swift */,
+				1A0000000000000000000208 /* WorldMapView.swift */,
+				1A0000000000000000000209 /* CountryDetailView.swift */,
+				1A0000000000000000000210 /* OutbreakFeedView.swift */,
+				1A0000000000000000000211 /* WatchlistView.swift */,
+				1A0000000000000000000212 /* GuideView.swift */,
+				1A0000000000000000000215 /* CountryCentroids.swift */,
+				1A0000000000000000000216 /* APIClient.swift */,
+				1A0000000000000000000213 /* SourceTransparencyView.swift */,
+				1A0000000000000000000217 /* WorldGeometry.swift */,
+				1A0000000000000000000219 /* OutbreakRoutes.swift */,
+				1A0000000000000000000221 /* LocationService.swift */,
+				1A0000000000000000000222 /* NotificationService.swift */,
+				1A0000000000000000000223 /* OnboardingView.swift */,
+				1A0000000000000000000224 /* SignalArtifactView.swift */,
+				1A0000000000000000000225 /* TranslatedSignalText.swift */,
+				1A0000000000000000000226 /* SignalDotWidget.swift */,
+				1A0000000000000000000227 /* AlertsView.swift */,
+				1A0000000000000000000228 /* TimelineScrubber.swift */,
+				1A0000000000000000000229 /* SwipeFeedView.swift */,
+				1A0000000000000000000234 /* ProfileView.swift */,
+				1A0000000000000000000236 /* LaunchTrace.swift */,
+				1A0000000000000000000239 /* NotificationTester.swift */,
+				1A000000000000000000023A /* LaunchSplashView.swift */,
+				1A000000000000000000023B /* MapboxMapHostView.swift */,
+				1A000000000000000000023C /* StartupPermissionsView.swift */,
+				1A0000000000000000000242 /* KeychainStore.swift */,
+				1A0000000000000000000243 /* UserSession.swift */,
+				1A0000000000000000000244 /* AuthService.swift */,
+				1A0000000000000000000245 /* WelcomeHero.swift */,
+				1A0000000000000000000246 /* WelcomeView.swift */,
+				1A0000000000000000000247 /* HantaAtlas.entitlements */,
+				1A0000000000000000000248 /* AuthGate.swift */,
+				1A0000000000000000000249 /* PreferencesSync.swift */,
+				1A0000000000000000000252 /* LoopingVideoView.swift */,
+				1A0000000000000000000218 /* Resources/world-countries-110m.geojson */,
+				1A0000000000000000000220 /* Resources/outbreak-routes.json */,
+				1A0000000000000000000250 /* PrivacyInfo.xcprivacy */,
+				8CE8246F2FB2E2A0008F1FAC /* Resources/MapboxAccessToken */,
+				1A0000000000000000000251 /* Resources/auth_loop.mp4 */,
+				1A0000000000000000000256 /* Resources/cosmic_scrub.mp4 */,
+				1A0000000000000000000214 /* Assets.xcassets */,
+			);
+			path = HantaAtlas;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000001 /* HantaAtlas.app */,
+				1A0000000000000000000302 /* HantaAtlasTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000304 /* HantaAtlasTests */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000303 /* HantaAtlasLogicTests.swift */,
+				1A0000000000000000000403 /* HantaAtlasSnapshotTests.swift */,
+			);
+			path = HantaAtlasTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A0000000000000000000005 /* HantaAtlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0000000000000000000013 /* Build configuration list for PBXNativeTarget "HantaAtlas" */;
+			buildPhases = (
+				1A0000000000000000000503 /* Frameworks */,
+				1A0000000000000000000006 /* Sources */,
+				1A0000000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HantaAtlas;
+			packageProductDependencies = (
+				1A0000000000000000000501 /* MapboxMaps */,
+				8CE8246D2FB2DA31008F1FAC /* MapboxCommon */,
+			);
+			productName = HantaAtlas;
+			productReference = 1A0000000000000000000001 /* HantaAtlas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1A0000000000000000000300 /* HantaAtlasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0000000000000000000308 /* Build configuration list for PBXNativeTarget "HantaAtlasTests" */;
+			buildPhases = (
+				1A0000000000000000000305 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A0000000000000000000306 /* PBXTargetDependency */,
+			);
+			name = HantaAtlasTests;
+			productName = HantaAtlasTests;
+			productReference = 1A0000000000000000000302 /* HantaAtlasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A0000000000000000000008 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					1A0000000000000000000005 = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
+					1A0000000000000000000300 = {
+						CreatedOnToolsVersion = 26.4.1;
+						TestTargetID = 1A0000000000000000000005;
+					};
+				};
+			};
+			buildConfigurationList = 1A0000000000000000000010 /* Build configuration list for PBXProject "HantaAtlas" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000000000000000000002;
+			packageReferences = (
+				1A0000000000000000000500 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				8CE8246C2FB2DA31008F1FAC /* XCRemoteSwiftPackageReference "mapbox-common-ios" */,
+			);
+			productRefGroup = 1A0000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0000000000000000000005 /* HantaAtlas */,
+				1A0000000000000000000300 /* HantaAtlasTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0000000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000114 /* Assets.xcassets in Resources */,
+				1A0000000000000000000118 /* Resources/world-countries-110m.geojson in Resources */,
+				1A0000000000000000000120 /* Resources/outbreak-routes.json in Resources */,
+				1A0000000000000000000150 /* PrivacyInfo.xcprivacy in Resources */,
+				8CE824702FB2E2A0008F1FAC /* Resources/MapboxAccessToken in Resources */,
+				1A0000000000000000000151 /* Resources/auth_loop.mp4 in Resources */,
+				1A0000000000000000000155 /* Resources/cosmic_scrub.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A0000000000000000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000101 /* HantaAtlasApp.swift in Sources */,
+				1A0000000000000000000102 /* ContentView.swift in Sources */,
+				1A0000000000000000000103 /* Theme.swift in Sources */,
+				1A0000000000000000000104 /* Models.swift in Sources */,
+				1A0000000000000000000105 /* Fixtures.swift in Sources */,
+				1A0000000000000000000140 /* CountryCatalogue.swift in Sources */,
+				1A0000000000000000000106 /* Components.swift in Sources */,
+				1A0000000000000000000107 /* DashboardView.swift in Sources */,
+				1A0000000000000000000108 /* WorldMapView.swift in Sources */,
+				1A0000000000000000000109 /* CountryDetailView.swift in Sources */,
+				1A0000000000000000000110 /* OutbreakFeedView.swift in Sources */,
+				1A0000000000000000000111 /* WatchlistView.swift in Sources */,
+				1A0000000000000000000112 /* GuideView.swift in Sources */,
+				1A0000000000000000000113 /* SourceTransparencyView.swift in Sources */,
+				1A0000000000000000000115 /* CountryCentroids.swift in Sources */,
+				1A0000000000000000000116 /* APIClient.swift in Sources */,
+				1A0000000000000000000117 /* WorldGeometry.swift in Sources */,
+				1A0000000000000000000119 /* OutbreakRoutes.swift in Sources */,
+				1A0000000000000000000121 /* LocationService.swift in Sources */,
+				1A0000000000000000000122 /* NotificationService.swift in Sources */,
+				1A0000000000000000000123 /* OnboardingView.swift in Sources */,
+				1A0000000000000000000124 /* SignalArtifactView.swift in Sources */,
+				1A0000000000000000000125 /* TranslatedSignalText.swift in Sources */,
+				1A0000000000000000000126 /* SignalDotWidget.swift in Sources */,
+				1A0000000000000000000127 /* AlertsView.swift in Sources */,
+				1A0000000000000000000128 /* TimelineScrubber.swift in Sources */,
+				1A0000000000000000000129 /* SwipeFeedView.swift in Sources */,
+				1A0000000000000000000134 /* ProfileView.swift in Sources */,
+				1A0000000000000000000136 /* LaunchTrace.swift in Sources */,
+				1A0000000000000000000139 /* NotificationTester.swift in Sources */,
+				1A000000000000000000013A /* LaunchSplashView.swift in Sources */,
+				1A000000000000000000013B /* MapboxMapHostView.swift in Sources */,
+				1A000000000000000000013C /* StartupPermissionsView.swift in Sources */,
+				1A0000000000000000000142 /* KeychainStore.swift in Sources */,
+				1A0000000000000000000143 /* UserSession.swift in Sources */,
+				1A0000000000000000000144 /* AuthService.swift in Sources */,
+				1A0000000000000000000145 /* WelcomeHero.swift in Sources */,
+				1A0000000000000000000146 /* WelcomeView.swift in Sources */,
+				1A0000000000000000000147 /* AuthGate.swift in Sources */,
+				1A0000000000000000000148 /* PreferencesSync.swift in Sources */,
+				1A0000000000000000000152 /* LoopingVideoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0000000000000000000305 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000301 /* HantaAtlasLogicTests.swift in Sources */,
+				1A0000000000000000000401 /* HantaAtlasSnapshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A0000000000000000000306 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A0000000000000000000005 /* HantaAtlas */;
+			targetProxy = 1A0000000000000000000307 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1A0000000000000000000011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A0000000000000000000012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0000000000000000000014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "HantaAtlas/HantaAtlas.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BRJLN7T497;
+				ENABLE_DEBUG_DYLIB = NO;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HantaAtlas;
+				INFOPLIST_FILE = "HantaAtlas/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				INFOPLIST_KEY_MBXAccessToken = pk.PUT_YOUR_MAPBOX_TOKEN_HERE;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "HantaAtlas uses your location to centre the surveillance map on your country and show whether there are recent hantavirus signals near you. Your location stays on your device — it is never sent to our servers.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_BackgroundColor = LaunchBackground;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anthonyyotov.HantaAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A0000000000000000000015 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "HantaAtlas/HantaAtlas.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BRJLN7T497;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HantaAtlas;
+				INFOPLIST_FILE = "HantaAtlas/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				INFOPLIST_KEY_MBXAccessToken = pk.PUT_YOUR_MAPBOX_TOKEN_HERE;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "HantaAtlas uses your location to centre the surveillance map on your country and show whether there are recent hantavirus signals near you. Your location stays on your device — it is never sent to our servers.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_BackgroundColor = LaunchBackground;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anthonyyotov.HantaAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1A0000000000000000000309 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anthonyyotov.HantaAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HantaAtlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HantaAtlas";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1A0000000000000000000310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anthonyyotov.HantaAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HantaAtlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HantaAtlas";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A0000000000000000000010 /* Build configuration list for PBXProject "HantaAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000000000000000000011 /* Debug */,
+				1A0000000000000000000012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0000000000000000000013 /* Build configuration list for PBXNativeTarget "HantaAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000000000000000000014 /* Debug */,
+				1A0000000000000000000015 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0000000000000000000308 /* Build configuration list for PBXNativeTarget "HantaAtlasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000000000000000000309 /* Debug */,
+				1A0000000000000000000310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A0000000000000000000500 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+		8CE8246C2FB2DA31008F1FAC /* XCRemoteSwiftPackageReference "mapbox-common-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-common-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A0000000000000000000501 /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000000000000000000500 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+		8CE8246D2FB2DA31008F1FAC /* MapboxCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CE8246C2FB2DA31008F1FAC /* XCRemoteSwiftPackageReference "mapbox-common-ios" */;
+			productName = MapboxCommon;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1A0000000000000000000008 /* Project object */;
+}

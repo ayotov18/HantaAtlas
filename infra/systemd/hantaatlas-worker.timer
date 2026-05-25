@@ -1,0 +1,11 @@
+[Unit]
+Description=Run HantaAtlas worker every hour
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1h
+RandomizedDelaySec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

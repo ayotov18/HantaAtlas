@@ -1,0 +1,105 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hantaatlas
+      POSTGRES_USER: hantaatlas
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hantaatlas_local}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hantaatlas -d hantaatlas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://hantaatlas:${POSTGRES_PASSWORD:-hantaatlas_local}@postgres:5432/hantaatlas
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  worker:
+    build:
+      context: .
+      dockerfile: backend/worker/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://hantaatlas:${POSTGRES_PASSWORD:-hantaatlas_local}@postgres:5432/hantaatlas
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      SEED_TIMEZONE: Europe/Sofia
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ── Reverse-proxy ingress (optional) ───────────────────────────────────────
+  # An iOS *device* cannot reach the host's localhost, so to run the app on real
+  # hardware you need an HTTPS origin on a domain you control. Two opt-in paths
+  # (neither runs by default):
+  #
+  #   profile "proxy"  → Caddy. Use when you have a public domain and a host with
+  #                      ports 80/443 reachable. Caddy auto-provisions a Let's
+  #                      Encrypt cert. Start with:
+  #                        APP_DOMAIN=api.example.com ACME_EMAIL=you@example.com \
+  #                          docker compose --profile proxy up
+  #
+  #   profile "tunnel" → Cloudflare Tunnel. Use when you're behind NAT / have no
+  #                      public IP. A free named tunnel maps your Cloudflare-
+  #                      managed domain → this api with valid HTTPS and no inbound
+  #                      ports. Set CLOUDFLARE_TUNNEL_TOKEN, then:
+  #                        docker compose --profile tunnel up
+  #
+  # For an instant throwaway URL with no domain, see README → "Run the backend"
+  # (the `cloudflared tunnel --url http://localhost:3000` quick tunnel).
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    profiles: ["proxy"]
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-localhost}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./infra/reverse-proxy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    profiles: ["tunnel"]
+    depends_on:
+      api:
+        condition: service_healthy
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN:-}
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

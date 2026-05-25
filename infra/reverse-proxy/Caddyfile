@@ -1,0 +1,27 @@
+# Caddy reverse proxy for the HantaAtlas API.
+#
+# Automatic HTTPS: when APP_DOMAIN is a real public hostname whose DNS points at
+# this host (ports 80 + 443 reachable), Caddy provisions and renews a Let's
+# Encrypt certificate with no extra config. For purely local experiments set
+# APP_DOMAIN=localhost and Caddy serves a locally-trusted self-signed cert.
+#
+# Used by the `caddy` service in docker-compose.yml (profile: proxy):
+#   APP_DOMAIN=api.example.com ACME_EMAIL=you@example.com \
+#     docker compose --profile proxy up
+
+{
+	email {$ACME_EMAIL}
+}
+
+{$APP_DOMAIN} {
+	encode zstd gzip
+
+	# The app only needs these; everything else 404s at the edge.
+	@api path /health /ready /openapi.json /v1/*
+	handle @api {
+		reverse_proxy api:3000
+	}
+	handle {
+		respond 404
+	}
+}

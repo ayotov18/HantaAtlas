@@ -1,0 +1,426 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ConfidenceLevel {
+  OFFICIAL_STRUCTURED_DATA
+  OFFICIAL_ALERT
+  MEDIA_SIGNAL
+  NO_RECENT_PUBLIC_DATA
+}
+
+enum AlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum GuideSectionKind {
+  PREVENTION
+  SYMPTOMS
+  URGENT_CARE
+}
+
+enum SignalCategory {
+  LOCAL
+  IMPORTED
+  RESPONSE
+  MEDIA
+}
+
+enum CountryActiveLevel {
+  ENDEMIC
+  ACTIVE
+  IMPORTED
+  RESPONSE
+  NONE
+}
+
+enum SignalPostType {
+  DEATH
+  CASE_CONFIRMED
+  CASE_SUSPECTED
+  CASE_IMPORTED
+  OFFICIAL_RESPONSE
+  EXPERT_VOICE
+  PUBLIC_DISCOURSE
+}
+
+enum SignalMediaType {
+  IMAGE
+  VIDEO
+  EMBED
+}
+
+enum EmergencyClassification {
+  NONE
+  ADVISORY
+  OUTBREAK
+  NATIONAL_EMERGENCY
+  INTERNATIONAL_CONCERN
+}
+
+model Country {
+  id          String            @id @default(cuid())
+  isoCode     String            @unique
+  name        String
+  regionId    String?
+  region      CountryRegion?    @relation(fields: [regionId], references: [id])
+  snapshots   CountrySnapshot[]
+  mapMetrics  MapMetricSnapshot[]
+  watchlists  WatchlistCountry[]
+  itineraries ItineraryCountry[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model CountryRegion {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  countries Country[]
+}
+
+model Source {
+  id              String            @id @default(cuid())
+  slug            String            @unique
+  organisation    String
+  url             String
+  sourceType      String
+  documents       SourceDocument[]
+  snapshots       CountrySnapshot[]
+  officialAlerts  OfficialAlert[]
+  lastSuccessfulFetchAt DateTime?
+  lastFailureAt    DateTime?
+  lastFailureReason String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model SourceDocument {
+  id          String   @id @default(cuid())
+  sourceId    String
+  source      Source   @relation(fields: [sourceId], references: [id])
+  title       String
+  url         String
+  reportedAt  DateTime?
+  publishedAt DateTime?
+  fetchedAt   DateTime @default(now())
+  checksum    String?
+  rawMetadata Json?
+}
+
+model CountrySnapshot {
+  id                   String          @id @default(cuid())
+  countryId            String
+  country              Country         @relation(fields: [countryId], references: [id])
+  sourceId             String
+  source               Source          @relation(fields: [sourceId], references: [id])
+  cases                Int?
+  deaths               Int?
+  confidenceLevel      ConfidenceLevel
+  reportingPeriodLabel String
+  reportedAt           DateTime?
+  publishedAt          DateTime?
+  lastCheckedAt        DateTime
+  sourceUrl            String
+  summary              String
+  virusType            String
+  limitations          String
+  createdAt            DateTime        @default(now())
+
+  @@index([countryId, lastCheckedAt])
+  @@index([confidenceLevel])
+}
+
+model OfficialAlert {
+  id              String          @id @default(cuid())
+  externalId      String?         @unique
+  title           String
+  countryName     String
+  regionName      String
+  sourceId        String
+  source          Source          @relation(fields: [sourceId], references: [id])
+  severity        AlertSeverity
+  confidenceLevel ConfidenceLevel
+  reportedAt      DateTime
+  publishedAt     DateTime
+  summary         String
+  sourceUrl       String
+  createdAt       DateTime        @default(now())
+
+  @@index([publishedAt])
+  @@index([severity])
+}
+
+model GuideArticle {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  summary     String?
+  sections    GuideSection[]
+  publishedAt DateTime?
+  updatedAt   DateTime      @updatedAt
+}
+
+model GuideSection {
+  id        String           @id @default(cuid())
+  articleId String
+  article   GuideArticle     @relation(fields: [articleId], references: [id])
+  kind      GuideSectionKind
+  title     String
+  body      String
+  order     Int
+}
+
+model MapMetricSnapshot {
+  id              String          @id @default(cuid())
+  countryId       String
+  country         Country         @relation(fields: [countryId], references: [id])
+  metricDate      DateTime
+  cases           Int?
+  alerts          Int
+  confidenceLevel ConfidenceLevel
+  colourKey       String
+
+  @@unique([countryId, metricDate])
+}
+
+model DeviceInstallation {
+  id              String             @id @default(cuid())
+  installationId  String             @unique
+  platform        String
+  locale          String?
+  timezone        String?
+  pushTokenHash   String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  watchlist       WatchlistCountry[]
+  itineraries     Itinerary[]
+  entitlements    Entitlement[]
+}
+
+model WatchlistCountry {
+  id                   String             @id @default(cuid())
+  deviceInstallationId String
+  deviceInstallation   DeviceInstallation @relation(fields: [deviceInstallationId], references: [id])
+  countryId            String
+  country              Country            @relation(fields: [countryId], references: [id])
+  createdAt            DateTime           @default(now())
+
+  @@unique([deviceInstallationId, countryId])
+}
+
+model Itinerary {
+  id                   String             @id @default(cuid())
+  deviceInstallationId String
+  deviceInstallation   DeviceInstallation @relation(fields: [deviceInstallationId], references: [id])
+  name                 String
+  startsAt             DateTime?
+  endsAt               DateTime?
+  countries            ItineraryCountry[]
+  createdAt            DateTime           @default(now())
+}
+
+model ItineraryCountry {
+  id          String    @id @default(cuid())
+  itineraryId String
+  itinerary   Itinerary @relation(fields: [itineraryId], references: [id])
+  countryId   String
+  country     Country   @relation(fields: [countryId], references: [id])
+  order        Int
+
+  @@unique([itineraryId, countryId])
+}
+
+model Signal {
+  id            String         @id           // hantavirusmap item id (stable)
+  title         String
+  summary       String?
+  url           String
+  sourceBucket  String                       // e.g. GoogleNews-en-US, WHO-DON, ProMED
+  publishedAt   DateTime
+  fetchedAt     DateTime       @default(now())
+  countryISO    String?                      // 2-letter, may be null
+  disease       String         @default("hantavirus")  // "hantavirus" | "ebola" (set by detectDisease)
+  category      SignalCategory
+  severity      AlertSeverity
+  postType      SignalPostType?              // null until classifier sets it (legacy rows)
+  mediaType     SignalMediaType?
+  mediaUrl      String?
+  mediaThumbnailUrl String?
+  mediaProvider String?
+  mediaSourceUrl String?
+  mediaWidth    Int?
+  mediaHeight   Int?
+  mediaFetchedAt DateTime?
+  mediaStatus   String?
+  raw           Json?
+
+  @@index([publishedAt(sort: Desc)])
+  @@index([countryISO, publishedAt(sort: Desc)])
+  @@index([disease, publishedAt(sort: Desc)])
+  @@index([disease, countryISO, publishedAt(sort: Desc)])
+  @@index([category])
+  @@index([postType])
+  @@index([mediaStatus])
+}
+
+model CountrySignalAggregate {
+  countryISO    String
+  disease       String              @default("hantavirus")
+  last30dCount  Int                 @default(0)
+  last6mCount   Int                 @default(0)
+  last1yCount   Int                 @default(0)
+  allTimeCount  Int                 @default(0)
+  activeLevel   CountryActiveLevel  @default(NONE)
+  lastSignalAt  DateTime?
+  updatedAt     DateTime            @updatedAt
+
+  // One rollup per (country, disease) so Ebola and Hantavirus light up the
+  // map independently.
+  @@id([countryISO, disease])
+  @@index([disease])
+}
+
+// One classification per country. Updated by the worker when WHO DON / ECDC
+// / CDC posts indicate a level change. Audit log lives in
+// CountryClassificationChange so the iOS Alerts tab can show a chronological
+// "what changed" feed.
+model CountryClassification {
+  countryISO          String
+  disease             String                  @default("hantavirus")
+  countryName         String
+  level               EmergencyClassification @default(NONE)
+  sourceOrganisation  String                  // "WHO", "ECDC", "CDC", "PAHO", "ProMED"
+  sourceUrl           String
+  declaredAt          DateTime
+  summary             String
+  updatedAt           DateTime                @updatedAt
+
+  // One classification per (country, disease).
+  @@id([countryISO, disease])
+  @@index([level])
+  @@index([disease])
+  @@index([updatedAt(sort: Desc)])
+}
+
+model CountryClassificationChange {
+  id                  String                  @id @default(cuid())
+  countryISO          String
+  disease             String                  @default("hantavirus")
+  countryName         String
+  fromLevel           EmergencyClassification
+  toLevel             EmergencyClassification
+  changedAt           DateTime                @default(now())
+  sourceOrganisation  String
+  sourceUrl           String
+
+  @@index([changedAt(sort: Desc)])
+  @@index([countryISO, changedAt(sort: Desc)])
+  @@index([disease, changedAt(sort: Desc)])
+}
+
+// User accounts. Three identity tiers as documented in the architecture
+// plan: anonymous (no row), Sign in with Apple, email + password. A single
+// User row may have any combination of `appleSubject` and `passwordHash`
+// — we link by appleSubject first, fall back to email match, then create
+// a new row.
+model User {
+  id              String         @id @default(cuid())
+  email           String?        @unique
+  displayName     String?
+  appleSubject    String?        @unique     // Apple's stable user id (sub claim)
+  passwordHash    String?                    // Argon2id; null when only Apple-signed
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  deletedAt       DateTime?                  // soft-delete (GDPR Art.17)
+  sessions        UserSession[]
+  entitlements    UserEntitlement[]
+  preferences     UserPreferences?
+
+  @@index([appleSubject])
+  @@index([email])
+}
+
+// Server-issued session tokens. JWT id (jti) lives here so we can revoke
+// individual sessions on logout / device-loss without rotating the secret.
+model UserSession {
+  id           String    @id @default(cuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jwtId        String    @unique
+  deviceInstallationId String?
+  createdAt    DateTime  @default(now())
+  expiresAt    DateTime
+  revokedAt    DateTime?
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Lifetime IAP entitlement linked to a User. Distinct from the existing
+// device-keyed `Entitlement` table — that one is for cases where the user
+// hasn't signed in but bought the IAP. The two reconcile when an anonymous
+// purchaser later signs in.
+model UserEntitlement {
+  id                  String    @id @default(cuid())
+  userId              String
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId           String                              // e.g. "hantaatlas.lifetime"
+  originalTransactionId String  @unique
+  receiptHash         String?                             // sha256 of the verified receipt
+  purchasedAt         DateTime
+  createdAt           DateTime  @default(now())
+
+  @@index([userId])
+  @@index([productId])
+}
+
+// Per-user personalization, synced across devices for a signed-in user.
+// 1:1 with User. Saved countries are stored as canonical-uppercase ISO codes.
+// Enum-like fields (selectedDiseaseMode, alertFrequency, minAlertLevel,
+// lastSelectedMetric) are plain strings validated by the route's zod schema —
+// they mirror the iOS raw values, intentionally decoupled from the Prisma
+// surveillance enums so a settings tweak never forces a schema migration.
+model UserPreferences {
+  userId                        String   @id
+  user                          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  savedCountries                String[] @default([])
+  trackAllCountries             Boolean  @default(false)
+  selectedDiseaseMode           String   @default("both")
+  lastSelectedMetric            String   @default("confidence")
+  officialNoticeAlerts          Boolean  @default(true)
+  itineraryAlerts               Boolean  @default(true)
+  trackedCountryCaseAlerts      Boolean  @default(true)
+  trackedCountryNewsBurstAlerts Boolean  @default(true)
+  alertFrequency                String   @default("realtime")
+  minAlertLevel                 String   @default("ADVISORY")
+  quietHoursEnabled             Boolean  @default(false)
+  quietHoursStart               Int      @default(22)
+  quietHoursEnd                 Int      @default(7)
+  createdAt                     DateTime @default(now())
+  updatedAt                     DateTime @updatedAt
+}
+
+model AppConfig {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model Entitlement {
+  id                   String             @id @default(cuid())
+  deviceInstallationId String
+  deviceInstallation   DeviceInstallation @relation(fields: [deviceInstallationId], references: [id])
+  productId            String
+  transactionId        String?            @unique
+  active               Boolean            @default(true)
+  purchasedAt          DateTime?
+  createdAt            DateTime           @default(now())
+}

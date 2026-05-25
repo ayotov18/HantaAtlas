@@ -1,0 +1,41 @@
+{
+  "generated": [
+    {
+      "name": "TodayGlobeHero",
+      "path": "assets/generated/today-globe-hero.png",
+      "usage": "Today hero card background"
+    },
+    {
+      "name": "CountryHeroArgentina",
+      "path": "assets/generated/country-hero-argentina.png",
+      "usage": "Argentina country detail hero"
+    },
+    {
+      "name": "RuralCabinRoute",
+      "path": "assets/generated/rural-cabin-route.png",
+      "usage": "Saved itinerary card"
+    },
+    {
+      "name": "SavedCardMapTexture",
+      "path": "assets/generated/saved-card-map-texture.png",
+      "usage": "Subtle saved-country card texture"
+    },
+    {
+      "name": "AppIconConcept",
+      "path": "assets/generated/app-icon-concept.png",
+      "usage": "Icon Composer layered icon concept"
+    }
+  ],
+  "flags": {
+    "source": "FlagCDN SVG assets",
+    "licence_note": "FlagCDN serves public-domain country flag SVGs sourced from flag repositories. Verify final attribution/legal requirements before App Store submission.",
+    "files": [
+      "assets/flags/us.svg",
+      "assets/flags/ar.svg",
+      "assets/flags/de.svg",
+      "assets/flags/cl.svg",
+      "assets/flags/pe.svg"
+    ]
+  }
+}
+

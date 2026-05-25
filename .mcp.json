@@ -1,0 +1,4 @@
+{
+  "_comment": "MCP servers for HantaAtlas. Empty by default — add servers per developer in this file (no nesting). Common candidates for this stack: a Postgres MCP server for the local prod replica, a GitHub MCP server for issue/PR context. Keep secrets out of this file; use environment variables in the server's `env` block.",
+  "mcpServers": {}
+}

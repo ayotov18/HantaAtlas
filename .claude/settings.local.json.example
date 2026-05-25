@@ -1,0 +1,6 @@
+{
+  "$comment": "Copy to .claude/settings.local.json (gitignored) to override any value from .claude/settings.json on your machine only. Common reasons: relax `permissions.ask` while you're heads-down on a refactor, bind a personal MCP server, or pin a specific model for a debugging session.",
+  "permissions": {
+    "allow": []
+  }
+}

@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+:root {
+  --quiet-cream: #fbf7f2;
+  --quiet-ink: #1f1b16;
+  --quiet-sage: #6b8e7f;
+  --quiet-blush: #e8b4a8;
+  --quiet-gold: #c9a961;
+  --terracotta: #c15f3c;
+  --sage-ink: #34483f;
+  --blush-ink: #56382f;
+  --gold-ink: #654c13;
+  --paper: #fffdf9;
+  --paper-warm: #f2eae0;
+
+  --background: var(--quiet-cream);
+  --foreground: var(--quiet-ink);
+  --card: var(--paper);
+  --card-foreground: var(--quiet-ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--quiet-ink);
+  --primary: var(--terracotta);
+  --primary-foreground: var(--quiet-cream);
+  --secondary: #eee6dc;
+  --secondary-foreground: var(--quiet-ink);
+  --muted: #ede5db;
+  --muted-foreground: #5b5146;
+  --accent: var(--quiet-blush);
+  --accent-foreground: var(--quiet-ink);
+  --amber: var(--quiet-gold);
+  --amber-foreground: var(--gold-ink);
+  --destructive: #7d211a;
+  --destructive-foreground: var(--quiet-cream);
+  --border: #d8cfc3;
+  --input: #d8cfc3;
+  --ring: var(--terracotta);
+  --graphite: var(--quiet-ink);
+  --clay: var(--blush-ink);
+
+  --radius: 1rem;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 180ms;
+  --motion-duration-slow: 280ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+@theme inline {
+  --color-quiet-cream: var(--quiet-cream);
+  --color-quiet-ink: var(--quiet-ink);
+  --color-quiet-sage: var(--quiet-sage);
+  --color-quiet-blush: var(--quiet-blush);
+  --color-quiet-gold: var(--quiet-gold);
+  --color-sage-ink: var(--sage-ink);
+  --color-blush-ink: var(--blush-ink);
+  --color-gold-ink: var(--gold-ink);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-amber: var(--amber);
+  --color-amber-foreground: var(--amber-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-graphite: var(--graphite);
+  --color-clay: var(--clay);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Fraunces, ui-serif, Georgia, serif;
+  --spacing-1x: var(--space-1);
+  --spacing-2x: var(--space-2);
+  --spacing-3x: var(--space-3);
+  --spacing-4x: var(--space-4);
+  --spacing-5x: var(--space-5);
+  --spacing-6x: var(--space-6);
+  --spacing-8x: var(--space-8);
+  --spacing-10x: var(--space-10);
+  --spacing-12x: var(--space-12);
+  --spacing-16x: var(--space-16);
+  --ease-quiet: var(--motion-ease-standard);
+  --ease-quiet-enter: var(--motion-ease-enter);
+  --ease-quiet-exit: var(--motion-ease-exit);
+  --default-transition-duration: var(--motion-duration-base);
+  --default-transition-timing-function: var(--motion-ease-standard);
+  --animate-accordion-down: accordion-down var(--motion-duration-base) var(--motion-ease-enter);
+  --animate-accordion-up: accordion-up var(--motion-duration-base) var(--motion-ease-exit);
+  --animate-fade-in: fade-in var(--motion-duration-slow) var(--motion-ease-enter);
+  --animate-rise-in: rise-in var(--motion-duration-slow) var(--motion-ease-enter);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(201, 169, 97, 0.14), transparent 32rem),
+    radial-gradient(circle at 84% 20%, rgba(232, 180, 168, 0.18), transparent 30rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background: rgba(232, 180, 168, 0.58);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+  font-family: var(--font-serif);
+  font-variation-settings:
+    "SOFT" 72,
+    "WONK" 0;
+  letter-spacing: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.phone-shadow {
+  box-shadow:
+    0 26px 80px rgba(31, 27, 22, 0.26),
+    0 8px 22px rgba(31, 27, 22, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.paper-grain {
+  position: relative;
+}
+
+.paper-grain::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(31, 27, 22, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 27, 22, 0.025) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Two-saber rotating border beam (BorderBeam component). */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+.border-beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.5px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    var(--terracotta) 16deg,
+    transparent 54deg,
+    transparent 180deg,
+    var(--quiet-gold) 196deg,
+    transparent 234deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: beam-spin 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

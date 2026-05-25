@@ -1,0 +1,22 @@
+{
+    "schemaVersion": 1,
+    "routes": [
+        {
+            "id": "mv-hondius-2026",
+            "name": "MV Hondius — Atlantic 2026",
+            "summary": "Cruise expedition with five confirmed hantavirus cases on board. Operator paused itinerary; ship en route to Tenerife under WHO-coordinated quarantine.",
+            "status": "AT_SEA",
+            "lastReportedAt": "2026-05-07T16:00:00Z",
+            "color": "terracotta",
+            "waypoints": [
+                { "name": "Bergen, NO",          "iso": "NO", "lat": 60.39,  "lon":  5.32,  "kind": "PORT_OF_DEPARTURE", "date": "2026-04-12" },
+                { "name": "Reykjavík, IS",       "iso": "IS", "lat": 64.15,  "lon": -21.94, "kind": "PORT_OF_CALL",      "date": "2026-04-18" },
+                { "name": "Halifax, CA",         "iso": "CA", "lat": 44.65,  "lon": -63.58, "kind": "PORT_OF_CALL",      "date": "2026-04-24" },
+                { "name": "Hamilton, BM",        "iso": "BM", "lat": 32.29,  "lon": -64.78, "kind": "PORT_OF_CALL",      "date": "2026-04-29" },
+                { "name": "Mid-Atlantic",         "iso": null, "lat": 30.00,  "lon": -45.00, "kind": "WAYPOINT_AT_SEA",   "date": "2026-05-03" },
+                { "name": "Approach Tenerife, ES","iso": "ES", "lat": 28.50,  "lon": -16.30, "kind": "QUARANTINE_PORT",   "date": "2026-05-08" }
+            ],
+            "currentPosition": { "lat": 29.10, "lon": -19.40 }
+        }
+    ]
+}

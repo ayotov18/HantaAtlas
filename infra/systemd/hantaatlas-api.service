@@ -1,0 +1,62 @@
+[Unit]
+Description=HantaAtlas API (Fastify)
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+Type=simple
+User=hantaatlas
+Group=hantaatlas
+WorkingDirectory=/opt/hantaatlas
+ExecStart=/usr/bin/node /opt/hantaatlas/backend/api/dist/server.js
+EnvironmentFile=/etc/hantaatlas/secrets.env
+
+# ── Restart policy ──
+Restart=on-failure
+RestartSec=5s
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+# ── Hardening ──
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateUsers=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+ProcSubset=pid
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0027
+
+# ── Read/write paths the service may touch ──
+ReadWritePaths=/var/log/hantaatlas
+ReadOnlyPaths=/etc/hantaatlas
+
+# ── Resource limits ──
+LimitNOFILE=65535
+TasksMax=512
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hantaatlas-api
+
+[Install]
+WantedBy=multi-user.target
