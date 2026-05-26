@@ -95,7 +95,3 @@ xcodebuild -project ios-app/HantaAtlas.xcodeproj -scheme HantaAtlas \
 ```
 
 Node 22 required. Backend workspaces are ESM (relative imports use `.js` suffixes).
-
-## License
-
-TODO: add a license before relying on this (e.g. MIT or Apache-2.0).
